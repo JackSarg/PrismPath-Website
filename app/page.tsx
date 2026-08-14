@@ -114,24 +114,26 @@ export default function Home() {
       </a>
 
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="PrismPath home">
-          <img src="/prismpath-icon.png" alt="" width="44" height="44" />
-          <span>
-            <strong>PrismPath</strong>
-            <small>XPath Assistant</small>
-          </span>
-        </a>
+        <div className="site-header-inner">
+          <a className="brand" href="#top" aria-label="PrismPath home">
+            <img src="/prismpath-icon.png" alt="" width="44" height="44" />
+            <span>
+              <strong>PrismPath</strong>
+              <small>XPath Assistant</small>
+            </span>
+          </a>
 
-        <nav aria-label="Main navigation">
-          <a href="#screenshots">Product</a>
-          <a href="#benefits">Benefits</a>
-          <a href="#usage">How it works</a>
-        </nav>
+          <nav aria-label="Main navigation">
+            <a href="#screenshots">Product</a>
+            <a href="#benefits">Benefits</a>
+            <a href="#usage">How it works</a>
+          </nav>
 
-        <a className="header-support" href="https://buymeacoffee.com/jacksarg" target="_blank" rel="noreferrer">
-          <span aria-hidden="true">☕</span>
-          Buy me a coffee
-        </a>
+          <a className="header-support" href="https://buymeacoffee.com/jacksarg" target="_blank" rel="noreferrer">
+            <span aria-hidden="true">☕</span>
+            Buy me a coffee
+          </a>
+        </div>
       </header>
 
       <div id="main-content">
