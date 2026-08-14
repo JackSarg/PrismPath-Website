@@ -1,3 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
+// Marketing assets are served directly; the Worker exposes no image proxy.
+
 const chromeInstallUrl =
   "https://github.com/JackSarg/PrismPath#chrome";
 const edgeInstallUrl =
@@ -52,12 +55,12 @@ const steps = [
 
 function StoreButton({
   href,
-  store,
+  icon,
   label,
   primary = false,
 }: {
   href: string;
-  store: string;
+  icon: string;
   label: string;
   primary?: boolean;
 }) {
@@ -69,16 +72,37 @@ function StoreButton({
       rel="noreferrer"
     >
       <span className="store-mark" aria-hidden="true">
-        {store.slice(0, 1)}
+        <img src={icon} alt="" width="24" height="24" />
       </span>
       <span>
         <small>Get PrismPath for</small>
         {label}
       </span>
-      <span className="button-arrow" aria-hidden="true">
-        ↗
+    </a>
+  );
+}
+
+function GithubButton() {
+  return (
+    <a className="github-button" href={githubUrl} target="_blank" rel="noreferrer">
+      <span className="store-mark github-mark" aria-hidden="true">
+        <img src="/icons/github.svg" alt="" width="24" height="24" />
+      </span>
+      <span>
+        <small>View the source on</small>
+        GitHub
       </span>
     </a>
+  );
+}
+
+function DownloadButtons({ className }: { className: string }) {
+  return (
+    <div className={`download-actions ${className}`} aria-label="Download PrismPath">
+      <StoreButton href={chromeInstallUrl} icon="/icons/chrome.png" label="Chrome" primary />
+      <StoreButton href={edgeInstallUrl} icon="/icons/edge.svg" label="Microsoft Edge" />
+      <GithubButton />
+    </div>
   );
 }
 
@@ -104,8 +128,9 @@ export default function Home() {
           <a href="#usage">How it works</a>
         </nav>
 
-        <a className="header-github" href={githubUrl} target="_blank" rel="noreferrer">
-          GitHub <span aria-hidden="true">↗</span>
+        <a className="header-support" href="https://buymeacoffee.com/jacksarg" target="_blank" rel="noreferrer">
+          <span aria-hidden="true">☕</span>
+          Buy me a coffee
         </a>
       </header>
 
@@ -120,22 +145,11 @@ export default function Home() {
               Take a stronger path to <span>stable selectors.</span>
             </h1>
             <p className="hero-description">
-              PrismPath turns one click into ranked, live-verified XPath alternatives—then
-              helps you save and retest them as your application evolves.
+              PrismPath enables more consistent xPath identification with one click allowing
+              your Blue Prism browser automations to be more stable!
             </p>
 
-            <div className="hero-actions" aria-label="Download PrismPath">
-              <StoreButton href={chromeInstallUrl} store="Chrome" label="Chrome" primary />
-              <StoreButton href={edgeInstallUrl} store="Edge" label="Microsoft Edge" />
-              <a className="github-button" href={githubUrl} target="_blank" rel="noreferrer">
-                <span className="code-mark" aria-hidden="true">&lt;/&gt;</span>
-                <span>
-                  <small>View the source on</small>
-                  GitHub
-                </span>
-                <span className="button-arrow" aria-hidden="true">↗</span>
-              </a>
-            </div>
+            <DownloadButtons className="hero-actions" />
 
             <div className="hero-proof" aria-label="PrismPath highlights">
               <span><strong>100%</strong> local</span>
@@ -184,13 +198,13 @@ export default function Home() {
               <h2>See the evidence, not just the selector.</h2>
             </div>
             <p>
-              PrismPath stays open beside the page, so rankings, validation, highlighting,
-              and saved regression checks are always in reach.
+              PrismPath stays open beside the page, so rankings, live validation, clear
+              explanations, and highlighting are always in reach.
             </p>
           </div>
 
           <div className="screenshot-grid">
-            <figure className="screenshot-card screenshot-card-wide">
+            <figure className="screenshot-card">
               <div className="screenshot-topline">
                 <span><i /> Ranked alternatives</span>
                 <span>GENERATED VIEW</span>
@@ -209,24 +223,6 @@ export default function Home() {
               </figcaption>
             </figure>
 
-            <figure className="screenshot-card screenshot-card-wide">
-              <div className="screenshot-topline">
-                <span><i /> Selector library</span>
-                <span>SAVED VIEW</span>
-              </div>
-              <div className="screenshot-frame">
-                <img
-                  src="/screenshots/saved.png"
-                  alt="PrismPath saved selector library with page-level retest controls"
-                  width="1280"
-                  height="800"
-                />
-              </div>
-              <figcaption>
-                <strong>Keep selectors healthy.</strong>
-                <span>Organise selectors by site, rename them clearly, then retest one element or the entire active page.</span>
-              </figcaption>
-            </figure>
           </div>
         </section>
 
@@ -290,10 +286,7 @@ export default function Home() {
             <h2>Give your automations a more reliable path.</h2>
             <p>Generate, verify, save, and retest stable XPath selectors—entirely on your machine.</p>
           </div>
-          <div className="cta-actions">
-            <a href={chromeInstallUrl} target="_blank" rel="noreferrer">Get PrismPath <span aria-hidden="true">↗</span></a>
-            <a href={githubUrl} target="_blank" rel="noreferrer">View on GitHub</a>
-          </div>
+          <DownloadButtons className="cta-actions" />
         </section>
       </div>
 
@@ -306,7 +299,9 @@ export default function Home() {
         <div>
           <a href={githubUrl} target="_blank" rel="noreferrer">GitHub</a>
           <a href="https://github.com/JackSarg/PrismPath/blob/main/PRIVACY.md" target="_blank" rel="noreferrer">Privacy</a>
+          <a href="https://jacksarg.com/" target="_blank" rel="noreferrer">JackSarg.com</a>
           <a href="https://www.linkedin.com/in/jacksarg/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://buymeacoffee.com/jacksarg" target="_blank" rel="noreferrer">Buy me a coffee</a>
         </div>
       </footer>
     </main>

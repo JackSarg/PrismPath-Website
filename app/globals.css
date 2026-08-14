@@ -145,7 +145,10 @@ img {
   color: var(--accent-strong);
 }
 
-.header-github {
+.header-support {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   justify-self: end;
   padding: 10px 15px;
   border: 1px solid var(--border);
@@ -157,7 +160,7 @@ img {
   transition: border-color 140ms ease, background 140ms ease, transform 140ms ease;
 }
 
-.header-github:hover {
+.header-support:hover {
   border-color: #35516b;
   background: var(--surface-hover);
   transform: translateY(-1px);
@@ -225,10 +228,13 @@ img {
   letter-spacing: -0.01em;
 }
 
-.hero-actions {
+.download-actions {
   display: grid;
   grid-template-columns: 1fr 1.12fr;
   gap: 10px;
+}
+
+.hero-actions {
   max-width: 530px;
   margin-top: 32px;
 }
@@ -236,7 +242,7 @@ img {
 .store-button,
 .github-button {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr;
   align-items: center;
   gap: 11px;
   min-height: 64px;
@@ -270,8 +276,7 @@ img {
   background: linear-gradient(135deg, #60dcee, #2fc9dd);
 }
 
-.store-mark,
-.code-mark {
+.store-mark {
   display: grid;
   place-items: center;
   width: 34px;
@@ -279,9 +284,12 @@ img {
   border: 1px solid rgba(145, 168, 186, 0.22);
   border-radius: 9px;
   background: rgba(145, 168, 186, 0.08);
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 12px;
-  font-weight: 800;
+}
+
+.store-mark img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
 }
 
 .store-button-primary .store-mark {
@@ -301,13 +309,10 @@ img {
   text-transform: uppercase;
 }
 
-.button-arrow {
-  font-size: 13px;
-  opacity: 0.7;
-}
-
 .github-button {
   grid-column: 1 / -1;
+  justify-self: center;
+  width: 255px;
   max-width: 255px;
 }
 
@@ -768,7 +773,7 @@ img {
 .final-cta {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: minmax(0, 1fr) minmax(430px, 0.78fr);
   align-items: end;
   gap: 60px;
   overflow: hidden;
@@ -806,39 +811,16 @@ img {
 }
 
 .cta-actions {
-  display: grid;
-  min-width: 220px;
-  gap: 10px;
+  width: 100%;
 }
 
-.cta-actions a {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 48px;
-  padding: 0 16px;
-  border: 1px solid var(--border);
-  border-radius: 9px;
-  background: #102238;
-  color: #dcecf2;
-  font-size: 11px;
-  font-weight: 760;
-  transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
-}
-
-.cta-actions a:first-child {
-  border-color: var(--accent);
-  background: var(--accent);
-  color: #03151d;
-}
-
-.cta-actions a:hover {
-  transform: translateY(-2px);
+.cta-actions .github-button {
+  width: calc((100% - 10px) / 2);
 }
 
 .site-footer {
   display: grid;
-  grid-template-columns: 1fr 1.3fr 1fr;
+  grid-template-columns: 0.85fr 1fr 1.45fr;
   align-items: center;
   gap: 35px;
   width: min(1180px, calc(100% - 48px));
@@ -861,6 +843,7 @@ img {
 
 .site-footer > div {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
   gap: 22px;
   color: #7791a5;
@@ -886,9 +869,20 @@ img {
     grid-template-columns: 1fr;
   }
 
-  .github-button {
+  .hero-actions .github-button {
     grid-column: auto;
+    width: 100%;
     max-width: none;
+  }
+
+  .final-cta {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 34px;
+  }
+
+  .cta-actions {
+    max-width: 530px;
   }
 
   .floating-selector {
@@ -927,8 +921,9 @@ img {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .github-button {
+  .hero-actions .github-button {
     grid-column: 1 / -1;
+    width: 255px;
     max-width: 255px;
   }
 
@@ -955,15 +950,6 @@ img {
     position: static;
   }
 
-  .final-cta {
-    align-items: start;
-    gap: 34px;
-  }
-
-  .cta-actions {
-    max-width: 280px;
-  }
-
   .site-footer {
     grid-template-columns: 1fr auto;
     padding: 28px 0;
@@ -986,7 +972,7 @@ img {
     padding: 16px 0;
   }
 
-  .header-github {
+  .header-support {
     padding: 9px 12px;
   }
 
@@ -999,12 +985,14 @@ img {
     font-size: clamp(45px, 14vw, 66px);
   }
 
-  .hero-actions {
+  .download-actions {
     grid-template-columns: 1fr;
   }
 
-  .github-button {
+  .download-actions .github-button,
+  .cta-actions .github-button {
     grid-column: auto;
+    width: 100%;
     max-width: none;
   }
 
