@@ -4,7 +4,7 @@
 const chromeInstallUrl =
   "https://github.com/JackSarg/PrismPath#chrome";
 const edgeInstallUrl =
-  "https://github.com/JackSarg/PrismPath#microsoft-edge";
+  "https://microsoftedge.microsoft.com/addons/detail/prismpath-xpath-assistant/oelbgmjhfanihghhpillngkceblpckia";
 const githubUrl = "https://github.com/JackSarg/PrismPath";
 
 const benefits = [
