@@ -2,33 +2,54 @@
 // Marketing assets are served directly; the Worker exposes no image proxy.
 
 const chromeInstallUrl =
-  "https://github.com/JackSarg/PrismPath#chrome";
+  "https://chromewebstore.google.com/detail/prismpath-xpath-assistant/lenbdbogeijpchncpofliobfpchajebi";
 const edgeInstallUrl =
   "https://microsoftedge.microsoft.com/addons/detail/prismpath-xpath-assistant/oelbgmjhfanihghhpillngkceblpckia";
 const githubUrl = "https://github.com/JackSarg/PrismPath";
 
 const benefits = [
   {
-    marker: "01",
+    icon: "path",
     title: "Stronger selectors",
     copy: "Replace brittle structural paths with ranked XPath options built from stable IDs, labels, attributes, text, and relationships.",
   },
   {
-    marker: "1×",
+    icon: "verify",
     title: "Verified as you work",
     copy: "Every candidate is checked against the live page and only shown when it resolves to the exact element once.",
   },
   {
-    marker: "↻",
+    icon: "retest",
     title: "Regression-ready",
     copy: "Save the selectors that matter, organise them by website, then retest a page after your application changes.",
   },
   {
-    marker: "⌁",
+    icon: "private",
     title: "Private by design",
     copy: "No account, analytics, or network calls. Page data and saved selectors stay inside your local browser profile.",
   },
 ];
+
+function BenefitIcon({ name }: { name: string }) {
+  const shared = {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    strokeWidth: 1.8,
+  };
+
+  if (name === "path") {
+    return <svg viewBox="0 0 24 24" aria-hidden="true"><path {...shared} d="M5 5h5v5M19 19h-5v-5M5 19l5-5M14 10l5-5" /><circle cx="5" cy="5" r="2" {...shared} /><circle cx="19" cy="19" r="2" {...shared} /></svg>;
+  }
+  if (name === "verify") {
+    return <svg viewBox="0 0 24 24" aria-hidden="true"><path {...shared} d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" /><circle cx="12" cy="12" r="5.5" {...shared} /><path {...shared} d="m9.5 12 1.7 1.7 3.6-3.6" /></svg>;
+  }
+  if (name === "retest") {
+    return <svg viewBox="0 0 24 24" aria-hidden="true"><path {...shared} d="M19 8a7.5 7.5 0 0 0-13-2L4 8m1-3v3h3M5 16a7.5 7.5 0 0 0 13 2l2-2m-1 3v-3h-3" /><path {...shared} d="m9.5 12 1.7 1.7 3.6-3.6" /></svg>;
+  }
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2" {...shared} /><path {...shared} d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v2" /></svg>;
+}
 
 const steps = [
   {
@@ -243,7 +264,7 @@ export default function Home() {
           <div className="benefit-grid">
             {benefits.map((benefit) => (
               <article className="benefit-card" key={benefit.title}>
-                <span className="benefit-marker">{benefit.marker}</span>
+                <span className="benefit-marker"><BenefitIcon name={benefit.icon} /></span>
                 <h3>{benefit.title}</h3>
                 <p>{benefit.copy}</p>
                 <span className="card-line" aria-hidden="true" />
